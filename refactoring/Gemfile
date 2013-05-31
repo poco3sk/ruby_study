@@ -6,3 +6,5 @@ gem "guard-rspec"
 gem "rr", require: false
 gem "rspec"
 gem "rspec-kickstarter"
+gem "simplecov", require: false
+

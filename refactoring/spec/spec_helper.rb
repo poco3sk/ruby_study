@@ -4,9 +4,17 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require './lib/chap_1/movie'
-require './lib/chap_1/rental'
-require './lib/chap_1/customer'
+
+require 'simplecov'
+SimpleCov.start do
+  add_filter "/spec/"
+  add_group "Chapters", "lib"
+end
+
+require 'chap_1/movie'
+require 'chap_1/rental'
+require 'chap_1/customer'
+
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
