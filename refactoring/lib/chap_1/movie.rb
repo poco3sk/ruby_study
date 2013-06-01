@@ -1,3 +1,7 @@
+# レンタルビデオ情報
+#
+# @attr_reader [String] title タイトル名
+# @attr [Integer] price_code 価格コード
 class Movie
   REGULAR     = 0
   NEW_RELEASE = 1

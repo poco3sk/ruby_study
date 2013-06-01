@@ -1,3 +1,7 @@
+# レンタル情報
+#
+# @attr_reader [Movie] movie レンタルビデオ情報
+# @attr_reader [Integer] days_rented レンタル期間
 class Rental
   attr_reader :movie, :days_rented
 

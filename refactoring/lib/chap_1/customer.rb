@@ -1,3 +1,7 @@
+# Customer 情報
+#
+# @attr_reader [String] name Customer name
+# @attr_reader [Array<Rental>] rentals レンタル情報
 class Customer
   attr_reader :name, :rentals
 
@@ -12,6 +16,7 @@ class Customer
   # レンタル情報の追加
   #
   # @param [Rental] rental
+  # @return [void]
   def add_rental(rental)
     @rentals << rental
   end
