@@ -11,4 +11,54 @@ describe Movie do
     it { expect(@actual.title).to eq(@title) }
     it { expect(@actual.price_code).to eq(@price_code) }
   end
+
+  describe '#charge' do
+    context "REGULAR" do
+      before do
+        @actual = Movie.new(@title, Movie::REGULAR)
+      end
+
+      context "days_rented が 2以下の場合" do
+        subject { @actual.charge(2) }
+        it { expect(subject).to eq(2) }
+      end
+
+      context "days_rented が 2より大きい場合" do
+        subject { @actual.charge(3) }
+        it { expect(subject).to eq(3.5) }
+      end
+    end
+
+    context "NEW_RELEASE" do
+      before do
+        @actual = Movie.new(@title, Movie::NEW_RELEASE)
+      end
+
+      context "days_rented が 2の場合" do
+        subject { @actual.charge(2) }
+        it { expect(subject).to eq(6) }
+      end
+
+      context "days_rented が 4の場合" do
+        subject { @actual.charge(4) }
+        it { expect(subject).to eq(12) }
+      end
+    end
+
+    context "CHILDRENS" do
+      before do
+        @actual = Movie.new(@title, Movie::CHILDRENS)
+      end
+
+      context "days_rented が 3以下の場合" do
+        subject { @actual.charge(3) }
+        it { expect(subject).to eq(1.5) }
+      end
+
+      context "days_rented が 3より大きい場合" do
+        subject { @actual.charge(4) }
+        it { expect(subject).to eq(3) }
+      end
+    end
+  end
 end
