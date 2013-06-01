@@ -20,17 +20,14 @@ class Customer
   #
   # @return [String] レンタル情報
   def statement
-    total_amount, frequent_renter_points = 0, 0
     result = "Rental Record for #{@name}\n"
 
     @rentals.each do |element|
-      frequent_renter_points += element.frequent_renter_points
-
       result += "\t#{element.movie.title}\t#{element.charge}\n"
     end
 
     result += "Amount owed is #{total_charge}\n"
-    result += "You earned #{frequent_renter_points} frequent renter points"
+    result += "You earned #{total_frequent_renter_points} frequent renter points"
   end
 
   # レンタル合計金額取得
@@ -38,5 +35,12 @@ class Customer
   # @return [Integer] 合計金額
   def total_charge
     @rentals.inject(0) { |sum, rental| sum += rental.charge }
+  end
+
+  # レンタルポイント合計取得
+  #
+  # @return [Integer] ポイント合計
+  def total_frequent_renter_points
+    @rentals.inject(0) { |sum, rental| sum += rental.frequent_renter_points }
   end
 end
