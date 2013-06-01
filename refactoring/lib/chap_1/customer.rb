@@ -35,6 +35,22 @@ class Customer
     result += "You earned #{total_frequent_renter_points} frequent renter points"
   end
 
+  # レンタル情報取得 HTML版
+  #
+  # @return [String] レンタル情報 HTML
+  def html_statement
+    result = "<h1>Rental Record for <em>#{@name}</em></h1>\n"
+
+    @rentals.each do |element|
+      result += "<p>#{element.movie.title}\t#{element.charge}</p><br />\n"
+    end
+
+    result += "<p>You owe <em>#{total_charge}</em></p>\n"
+    result += "<p>On this rental you earned " +
+              "<em>#{total_frequent_renter_points}</em>" +
+              " frequent renter points</p>"
+  end
+
   private
   # レンタル合計金額取得
   #
