@@ -25,7 +25,6 @@ describe Customer do
   describe '#statement' do
     before do
       @name     = "name"
-      @rentals  = [ stub(Rental), stub(Rental) ]
       @actual   = Customer.new(@name)
     end
 
@@ -47,7 +46,6 @@ describe Customer do
   describe '#html_statement' do
     before do
       @name     = "name"
-      @rentals  = [ stub(Rental), stub(Rental) ]
       @actual   = Customer.new(@name)
     end
 
