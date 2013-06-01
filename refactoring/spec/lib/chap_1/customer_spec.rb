@@ -39,6 +39,7 @@ describe Customer do
       subject { @actual.statement }
       it { expect(subject).to match(/Rental Record for name/) }
       it { expect(subject).to match(/title1\t2/) }
+      it { expect(subject).to match(/Amount owed is 11\n/) }
       it { expect(subject).to match(/You earned 3 frequent renter points/) }
     end
   end
