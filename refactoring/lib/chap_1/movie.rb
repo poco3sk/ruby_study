@@ -37,4 +37,12 @@ class Movie
 
     result
   end
+
+  # レンタルポイント計算
+  #
+  # @param [Integer] days_rented レンタル期間
+  # @return [Integer] レンタルポイント
+  def frequent_renter_points(days_rented)
+    (@price_code == NEW_RELEASE && days_rented > 1) ? 2 : 1
+  end
 end

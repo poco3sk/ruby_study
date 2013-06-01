@@ -61,4 +61,54 @@ describe Movie do
       end
     end
   end
+
+  describe "#frequent_renter_points" do
+    context "REGULAR" do
+      before do
+        @actual = Movie.new(:title, Movie::REGULAR)
+      end
+
+      context "days_rented が 1の場合" do
+        subject { @actual.frequent_renter_points(1) }
+        it { expect(subject).to eq(1) }
+      end
+
+      context "days_rented が 2の場合" do
+        subject { @actual.frequent_renter_points(2) }
+        it { expect(subject).to eq(1) }
+      end
+    end
+
+    context "NEW_RELEASE" do
+      before do
+        @actual = Movie.new(:title, Movie::NEW_RELEASE)
+      end
+
+      context "days_rented が 1の場合" do
+        subject { @actual.frequent_renter_points(1) }
+        it { expect(subject).to eq(1) }
+      end
+
+      context "days_rented が 2の場合" do
+        subject { @actual.frequent_renter_points(2) }
+        it { expect(subject).to eq(2) }
+      end
+    end
+
+    context "CHILDRENS" do
+      before do
+        @actual = Movie.new(:title, Movie::CHILDRENS)
+      end
+
+      context "days_rented が 1の場合" do
+        subject { @actual.frequent_renter_points(1) }
+        it { expect(subject).to eq(1) }
+      end
+
+      context "days_rented が 2の場合" do
+        subject { @actual.frequent_renter_points(2) }
+        it { expect(subject).to eq(1) }
+      end
+    end
+  end
 end
