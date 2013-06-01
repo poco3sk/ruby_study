@@ -8,7 +8,7 @@
 require 'simplecov'
 SimpleCov.start do
   add_filter "/spec/"
-  add_group "Chapters", "lib"
+  add_group "Chapter 1", "lib/chap_1"
 end
 
 require 'chap_1/movie'
