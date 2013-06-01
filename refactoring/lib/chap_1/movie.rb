@@ -1,21 +1,34 @@
 # レンタルビデオ情報
 #
 # @attr_reader [String] title タイトル名
-# @attr [Integer] price_code 価格コード
+# @attr_reader [Integer] price_code 価格コード
 class Movie
   REGULAR     = 0
   NEW_RELEASE = 1
   CHILDRENS   = 2
 
-  attr_reader :title
-  attr_accessor :price_code
+  attr_reader :title, :price_code, :price
 
   # new
   #
   # @param [String] title
   # @param [Integer] price_code
-  def initialize(title, price_code)
-    @title, @price_code = title, price_code
+  def initialize(title, the_price_code)
+    @title, self.price_code = title, the_price_code
+  end
+
+  # price_code custom setter
+  #
+  # priceもprice_codeによって更新する
+  # @param [Integer] value 価格コード
+  # @return [void]
+  def price_code=(value)
+    @price_code = value
+    @price = case @price_code
+             when REGULAR; RegularPrice.new
+             when NEW_RELEASE; NewReleasePrice.new
+             when CHILDRENS; ChildrensPrice.new
+             end
   end
 
   # レンタル金額計算
@@ -23,19 +36,7 @@ class Movie
   # @param [Integer] days_rented レンタル期間
   # @return [Integer] レンタル金額
   def charge(days_rented)
-    result = 0
-    case @price_code
-    when REGULAR
-      result += 2
-      result += (days_rented - 2) * 1.5 if days_rented > 2
-    when NEW_RELEASE
-      result += days_rented * 3
-    when CHILDRENS
-      result += 1.5
-      result += (days_rented - 3) * 1.5 if days_rented > 3
-    end
-
-    result
+    @price.charge(days_rented)
   end
 
   # レンタルポイント計算
