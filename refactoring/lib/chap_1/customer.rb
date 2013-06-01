@@ -27,10 +27,21 @@ class Customer
       frequent_renter_points += element.frequent_renter_points
 
       result += "\t#{element.movie.title}\t#{element.charge}\n"
-      total_amount += element.charge
     end
 
-    result += "Amount owed is #{total_amount}\n"
+    result += "Amount owed is #{total_charge}\n"
     result += "You earned #{frequent_renter_points} frequent renter points"
+  end
+
+  # レンタル合計金額取得
+  #
+  # @return [Integer] 合計金額
+  def total_charge
+    result = 0
+    @rentals.each do |element|
+      result += element.charge
+    end
+
+    result
   end
 end
