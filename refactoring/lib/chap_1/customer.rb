@@ -30,6 +30,7 @@ class Customer
     result += "You earned #{total_frequent_renter_points} frequent renter points"
   end
 
+  private
   # レンタル合計金額取得
   #
   # @return [Integer] 合計金額
