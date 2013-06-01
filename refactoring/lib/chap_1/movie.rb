@@ -6,6 +6,10 @@ class Movie
   attr_reader :title
   attr_accessor :price_code
 
+  # new
+  #
+  # @param [String] title
+  # @param [Integer] price_code
   def initialize(title, price_code)
     @title, @price_code = title, price_code
   end

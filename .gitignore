@@ -1,3 +1,5 @@
 .idea/
 refactoring/tmp
 coverage
+.yardoc
+doc/

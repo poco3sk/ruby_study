@@ -1,15 +1,24 @@
 class Customer
   attr_reader :name, :rentals
 
+  # new
+  #
+  # @param [String] name
   def initialize(name)
     @name     = name
     @rentals  = []
   end
 
-  def add_rental(arg)
-    @rentals << arg
+  # レンタル情報の追加
+  #
+  # @param [Rental] rental
+  def add_rental(rental)
+    @rentals << rental
   end
 
+  # レンタル情報取得
+  #
+  # @return [String] レンタル情報
   def statement
     total_amount, frequent_renter_points = 0, 0
     result = "Rental Record for #{@name}\n"

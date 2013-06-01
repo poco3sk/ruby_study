@@ -7,4 +7,5 @@ gem "rr", require: false
 gem "rspec"
 gem "rspec-kickstarter"
 gem "simplecov", require: false
+gem "yard", require: false
 
