@@ -1,34 +1,20 @@
 # レンタルビデオ情報
 #
 # @attr_reader [String] title タイトル名
-# @attr_reader [Integer] price_code 価格コード
+# @attr_reader [RegularPrice, NewReleasePrice, ChildrensPrice] レンタルビデオモデル
 class Movie
   REGULAR     = 0
   NEW_RELEASE = 1
   CHILDRENS   = 2
 
-  attr_reader :title, :price_code, :price
+  attr_reader :title, :price
 
   # new
   #
   # @param [String] title
-  # @param [Integer] price_code
-  def initialize(title, the_price_code)
-    @title, self.price_code = title, the_price_code
-  end
-
-  # price_code custom setter
-  #
-  # priceもprice_codeによって更新する
-  # @param [Integer] value 価格コード
-  # @return [void]
-  def price_code=(value)
-    @price_code = value
-    @price = case @price_code
-             when REGULAR; RegularPrice.new
-             when NEW_RELEASE; NewReleasePrice.new
-             when CHILDRENS; ChildrensPrice.new
-             end
+  # @param [RegularPrice, NewReleasePrice, ChildrensPrice] レンタルビデオモデル
+  def initialize(title, price)
+    @title, @price = title, price
   end
 
   # レンタル金額計算

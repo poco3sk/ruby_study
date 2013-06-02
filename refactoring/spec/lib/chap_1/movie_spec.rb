@@ -3,19 +3,19 @@ require 'spec_helper'
 describe Movie do
   describe 'new' do
     before do
-      @title      = "title"
-      @price_code = Movie::REGULAR
-      @actual     = Movie.new(@title, @price_code)
+      @title  = "title"
+      @price  = RegularPrice.new
+      @actual = Movie.new(@title, @price)
     end
 
     it { expect(@actual.title).to eq(@title) }
-    it { expect(@actual.price_code).to eq(@price_code) }
+    it { expect(@actual.price).to eq(@price) }
   end
 
   describe '#charge' do
     context "REGULAR" do
       before do
-        @actual = Movie.new(@title, Movie::REGULAR)
+        @actual = Movie.new(@title, RegularPrice.new)
       end
 
       context "days_rented が 2以下の場合" do
@@ -31,7 +31,7 @@ describe Movie do
 
     context "NEW_RELEASE" do
       before do
-        @actual = Movie.new(@title, Movie::NEW_RELEASE)
+        @actual = Movie.new(@title, NewReleasePrice.new)
       end
 
       context "days_rented が 2の場合" do
@@ -47,7 +47,7 @@ describe Movie do
 
     context "CHILDRENS" do
       before do
-        @actual = Movie.new(@title, Movie::CHILDRENS)
+        @actual = Movie.new(@title, ChildrensPrice.new)
       end
 
       context "days_rented が 3以下の場合" do
@@ -65,7 +65,7 @@ describe Movie do
   describe "#frequent_renter_points" do
     context "REGULAR" do
       before do
-        @actual = Movie.new(:title, Movie::REGULAR)
+        @actual = Movie.new(:title, RegularPrice.new)
       end
 
       context "days_rented が 1の場合" do
@@ -81,7 +81,7 @@ describe Movie do
 
     context "NEW_RELEASE" do
       before do
-        @actual = Movie.new(:title, Movie::NEW_RELEASE)
+        @actual = Movie.new(:title, NewReleasePrice.new)
       end
 
       context "days_rented が 1の場合" do
@@ -97,7 +97,7 @@ describe Movie do
 
     context "CHILDRENS" do
       before do
-        @actual = Movie.new(:title, Movie::CHILDRENS)
+        @actual = Movie.new(:title, ChildrensPrice.new)
       end
 
       context "days_rented が 1の場合" do

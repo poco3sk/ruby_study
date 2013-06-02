@@ -31,8 +31,8 @@ describe Customer do
     context "rentals 1" do
       before do
         @actual   = Customer.new("name")
-        @actual.add_rental Rental.new(Movie.new("title1", Movie::REGULAR), 2)
-        @actual.add_rental Rental.new(Movie.new("title2", Movie::NEW_RELEASE), 3)
+        @actual.add_rental Rental.new(Movie.new("title1", RegularPrice.new), 2)
+        @actual.add_rental Rental.new(Movie.new("title2", NewReleasePrice.new), 3)
       end
 
       subject { @actual.statement }
@@ -52,8 +52,8 @@ describe Customer do
     context "rentals 1" do
       before do
         @actual   = Customer.new("name")
-        @actual.add_rental Rental.new(Movie.new("title1", Movie::REGULAR), 2)
-        @actual.add_rental Rental.new(Movie.new("title2", Movie::NEW_RELEASE), 3)
+        @actual.add_rental Rental.new(Movie.new("title1", RegularPrice.new), 2)
+        @actual.add_rental Rental.new(Movie.new("title2", NewReleasePrice.new), 3)
       end
 
       subject { @actual.html_statement }
