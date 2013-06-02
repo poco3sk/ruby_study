@@ -1,5 +1,7 @@
 # レンタルビデオ REGULAR
 class RegularPrice
+  include DefaultPrice
+
   # レンタル金額計算
   #
   # @param [Integer] days_rented レンタル期間

@@ -11,6 +11,7 @@ SimpleCov.start do
   add_group "Chapter 1", "lib/chap_1"
 end
 
+require 'chap_1/default_price'
 require 'chap_1/regular_price'
 require 'chap_1/new_release_price'
 require 'chap_1/childrens_price'
