@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe ExtractMethodSample1 do
+describe ExtractMethodSample do
   before do
     stub(@order1 = Object.new).amount { 1.5 }
     stub(@order2 = Object.new).amount { 2.0 }
     @name   = "sample"
     @amount = @order1.amount + @order2.amount
-    @klass  = ExtractMethodSample1.new(@name)
+    @klass  = ExtractMethodSample.new(@name)
     @klass.add_order(@order1)
     @klass.add_order(@order2)
   end

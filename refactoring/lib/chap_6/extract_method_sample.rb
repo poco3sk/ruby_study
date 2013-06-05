@@ -1,8 +1,8 @@
-# chap.6 Extract Method用クラス その1
+# chap.6 Extract Method用クラス
 #
 # @attr_reader [String] name
 # @attr_reader [Order] orders
-class ExtractMethodSample1
+class ExtractMethodSample
   attr_reader :name, :orders
 
   # new
