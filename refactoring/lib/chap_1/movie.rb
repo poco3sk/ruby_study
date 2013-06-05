@@ -1,7 +1,7 @@
 # レンタルビデオ情報
 #
 # @attr_reader [String] title タイトル名
-# @attr_reader [RegularPrice, NewReleasePrice, ChildrensPrice] レンタルビデオモデル
+# @attr_reader [RegularPrice, NewReleasePrice, ChildrensPrice] price レンタルビデオモデル
 class Movie
   REGULAR     = 0
   NEW_RELEASE = 1
@@ -12,7 +12,7 @@ class Movie
   # new
   #
   # @param [String] title
-  # @param [RegularPrice, NewReleasePrice, ChildrensPrice] レンタルビデオモデル
+  # @param [RegularPrice, NewReleasePrice, ChildrensPrice] price レンタルビデオモデル
   def initialize(title, price)
     @title, @price = title, price
   end
