@@ -6,19 +6,13 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'stringio'
+require 'refactoring_require'
+
 SimpleCov.start do
   add_filter "/spec/"
   add_group "Chapter 1", "lib/chap_1"
 end
-
-require 'chap_1/default_price'
-require 'chap_1/regular_price'
-require 'chap_1/new_release_price'
-require 'chap_1/childrens_price'
-require 'chap_1/movie'
-require 'chap_1/rental'
-require 'chap_1/customer'
-
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
@@ -31,4 +25,16 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+end
+
+def capture(stream)
+  begin
+    stream = stream.to_s
+    eval "$#{stream} = StringIO.new"
+    yield
+    result = eval("$#{stream}").string
+  ensure
+    eval "$#{stream} = #{stream.upcase}"
+  end
+  result
 end
