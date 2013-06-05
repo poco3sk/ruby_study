@@ -31,6 +31,11 @@ amount: #{@sub_amount}
     TEXT
   end
 
+  describe "#calculate_outstanding" do
+    subject { @klass.calculate_outstanding }
+    it { expect(subject).to eq(@amount) }
+  end
+
   describe '#print_owing' do
     subject { capture(:stdout) { @klass.print_owing } }
     it { expect(subject).to eq(<<-TEXT) }

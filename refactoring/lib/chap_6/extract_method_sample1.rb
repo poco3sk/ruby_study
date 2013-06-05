@@ -25,15 +25,8 @@ class ExtractMethodSample1
   #
   # @return [void]
   def print_owing
-    outstanding = 0.0
-
     print_banner
-
-    @orders.each do |order|
-      outstanding += order.amount
-    end
-
-    print_details(outstanding)
+    print_details(calculate_outstanding)
   end
 
   # バナー出力
@@ -52,5 +45,12 @@ class ExtractMethodSample1
   def print_details(outstanding)
     puts "name: #{@name}"
     puts "amount: #{outstanding}"
+  end
+
+  # 支払い計算
+  #
+  # @return [Fixnum] outstanding
+  def calculate_outstanding
+    @orders.inject(0.0) { |sum, order| sum += order.amount }
   end
 end
