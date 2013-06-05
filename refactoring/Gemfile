@@ -1,6 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
+gem 'awesome_print'
 gem "growl"
 gem "guard-rspec"
 gem "rr", require: false

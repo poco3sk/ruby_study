@@ -5,6 +5,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'awesome_print'
 require 'simplecov'
 require 'stringio'
 require 'refactoring_require'
