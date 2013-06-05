@@ -11,6 +11,15 @@ describe ExtractMethodSample1 do
     @klass.add_order(@order2)
   end
 
+  describe "#print_banner" do
+    subject { capture(:stdout) { @klass.print_banner } }
+    it { expect(subject).to eq(<<-TEXT) }
+*************************
+***** Csutomer Owes *****
+*************************
+    TEXT
+  end
+
   describe '#print_owing' do
     subject { capture(:stdout) { @klass.print_owing } }
     it { expect(subject).to eq(<<-TEXT) }
