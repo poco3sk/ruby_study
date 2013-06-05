@@ -24,7 +24,7 @@ describe ExtractMethodSample1 do
     before do
       @sub_amount = 5.5
     end
-    subject { capture(:stdout) { @klass.print_detail(@sub_amount) } }
+    subject { capture(:stdout) { @klass.print_details(@sub_amount) } }
     it { expect(subject).to eq(<<-TEXT) }
 name: #{@name}
 amount: #{@sub_amount}
