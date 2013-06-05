@@ -5,6 +5,7 @@ describe ExtractMethodSample1 do
     stub(@order1 = Object.new).amount { 1.5 }
     stub(@order2 = Object.new).amount { 2.0 }
     @name   = "sample"
+    @amount = @order1.amount + @order2.amount
     @klass  = ExtractMethodSample1.new(@name)
     @klass.add_order(@order1)
     @klass.add_order(@order2)
@@ -17,7 +18,7 @@ describe ExtractMethodSample1 do
 ***** Csutomer Owes *****
 *************************
 name: #{@name}
-amount: 3.5
+amount: #{@amount}
     TEXT
   end
 end
