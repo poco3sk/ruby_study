@@ -17,9 +17,30 @@ class IntroduceExplainingVariable
   #
   # @return [Fixnum]
   def price
-    base_price = @quantity * @item_price
-    quantity_discount = [0, @quantity - 500].max * @item_price * 0.05
-    shipping = [base_price * 0.1, 100.0].min
     return base_price - quantity_discount + shipping
+  end
+
+  # base price
+  # 基本価格
+  #
+  # @return [Integer]
+  def base_price
+    @quantity * @item_price
+  end
+
+  # quantity discount
+  # 数量割引
+  #
+  # @return [Fixnum]
+  def quantity_discount
+    [0, @quantity - 500].max * @item_price * 0.05
+  end
+
+  # shipping
+  # 配達料
+  #
+  # @return [Fixnum]
+  def shipping
+    shipping = [base_price * 0.1, 100.0].min
   end
 end
