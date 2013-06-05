@@ -5,15 +5,16 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'awesome_print'
 require 'simplecov'
-require 'stringio'
-require 'refactoring_require'
-
 SimpleCov.start do
   add_filter "/spec/"
   add_group "Chapter 1", "lib/chap_1"
+  add_group "Chapter 6", "lib/chap_6"
 end
+
+require 'awesome_print'
+require 'stringio'
+require 'refactoring_require'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
