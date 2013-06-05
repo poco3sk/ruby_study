@@ -23,10 +23,12 @@ class ExtractMethodSample1
 
   # 未払い情報出力
   #
+  # @param [Fixnum] previous_amount
   # @return [void]
-  def print_owing
+  def print_owing(previous_amount)
+    outstainding = previous_amount * 1.2
     print_banner
-    print_details(calculate_outstanding)
+    print_details(calculate_outstanding(outstainding))
   end
 
   # バナー出力
@@ -49,8 +51,9 @@ class ExtractMethodSample1
 
   # 支払い計算
   #
+  # @param [Fixnum] initial_value
   # @return [Fixnum] outstanding
-  def calculate_outstanding
-    @orders.inject(0.0) { |sum, order| sum += order.amount }
+  def calculate_outstanding(initial_value)
+    @orders.inject(initial_value) { |sum, order| sum += order.amount }
   end
 end

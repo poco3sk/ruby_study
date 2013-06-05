@@ -32,18 +32,28 @@ amount: #{@sub_amount}
   end
 
   describe "#calculate_outstanding" do
-    subject { @klass.calculate_outstanding }
-    it { expect(subject).to eq(@amount) }
+    before do
+      @initial_value  = 3.5
+      @sub_amount     = @amount + @initial_value
+    end
+
+    subject { @klass.calculate_outstanding(@initial_value) }
+    it { expect(subject).to eq(@sub_amount) }
   end
 
   describe '#print_owing' do
-    subject { capture(:stdout) { @klass.print_owing } }
+    before do
+      @previous_amount = 5.0
+      interest    = 1.2
+      @sub_amount = @previous_amount * interest + @amount
+    end
+    subject { capture(:stdout) { @klass.print_owing(@previous_amount) } }
     it { expect(subject).to eq(<<-TEXT) }
 *************************
 ***** Csutomer Owes *****
 *************************
 name: #{@name}
-amount: #{@amount}
+amount: #{@sub_amount}
     TEXT
   end
 end
