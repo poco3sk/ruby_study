@@ -24,7 +24,7 @@ class Select
   # add_options
   #
   # @param [Integer] option
-  # @return [void]
+  # @return [Select]
   def add_option(option)
     options << option
     self
