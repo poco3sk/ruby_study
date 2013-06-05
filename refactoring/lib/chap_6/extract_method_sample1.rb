@@ -33,8 +33,7 @@ class ExtractMethodSample1
       outstanding += order.amount
     end
 
-    puts "name: #{@name}"
-    puts "amount: #{outstanding}"
+    print_details(outstanding)
   end
 
   # バナー出力
@@ -44,5 +43,14 @@ class ExtractMethodSample1
     puts "*************************"
     puts "***** Csutomer Owes *****"
     puts "*************************"
+  end
+
+  # 詳細情報表示
+  #
+  # @param [Fixnum] outstanding
+  # @return [void]
+  def print_details(outstanding)
+    puts "name: #{@name}"
+    puts "amount: #{outstanding}"
   end
 end
