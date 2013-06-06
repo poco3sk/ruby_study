@@ -9,3 +9,5 @@ require 'chap_6/extract_method_sample'
 require 'chap_6/replace_temp_with_query_sample'
 require 'chap_6/select'
 require 'chap_6/introduce_explaining_variable'
+require 'chap_6/split_temporary_variable'
+
