@@ -32,8 +32,8 @@ class SplitTemporaryVariable
 
     if secondary_time > 0
       primary_val = acc * @delay
-      acc = (@primary_force + @secondary_force) / @mass
-      result += primary_val * secondary_time + 5 * acc * secondary_time * secondary_time
+      secondary_acc = (@primary_force + @secondary_force) / @mass
+      result += primary_val * secondary_time + 5 * secondary_acc * secondary_time * secondary_time
     end
 
     result
