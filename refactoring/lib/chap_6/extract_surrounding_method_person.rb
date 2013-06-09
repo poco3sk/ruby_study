@@ -31,10 +31,7 @@ class ExtractSurroundingMethodPerson
   #
   # @return [Integer]
   def number_of_living_descendants
-    children.inject(0) do |count, child|
-      count += 1 if child.alive?
-      count + child.number_of_living_descendants
-    end
+    count_of_descendants_match { |descendant| descendant.alive? }
   end
 
   # number of descendants named
@@ -42,10 +39,7 @@ class ExtractSurroundingMethodPerson
   # @param [String] name
   # @return [Integer]
   def number_of_descendants_named(name)
-    children.inject(0) do |count, child|
-      count += 1 if child.name == name
-      count + child.number_of_descendants_named(name)
-    end
+    count_of_descendants_match { |descendant| descendant.name == name }
   end
 
   # person alive?
@@ -53,5 +47,13 @@ class ExtractSurroundingMethodPerson
   # @return [TrueClass, FalseClass]
   def alive?
     @date_of_death.nil?
+  end
+
+  protected
+  def count_of_descendants_match(&block)
+    children.inject(0) do |count, child|
+      count += 1 if yield child
+      count + child.number_of_descendants_named(name)
+    end
   end
 end
