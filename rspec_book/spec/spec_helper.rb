@@ -6,6 +6,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 Dir.glob(__dir__ + "/../lib/*.rb").each { |f| require f }
+Dir.glob("spec/steps/**/*steps.rb") { |f| load f, true }
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
